@@ -28,7 +28,7 @@ class MoonShineServiceProvider extends ServiceProvider
             MenuGroup::make('Пользователи', [
                 MenuItem::make('Все пользователи', new UserResource())->icon('heroicons.outline.users'),
                 MenuItem::make('Члены клуба ХАБАР', new HabarUserResource())->icon('heroicons.star'),
-                MenuItem::make('Находящиеся в бане', new BannedUserResource())->icon('heroicons.no-symbol'),
+                MenuItem::make('Находящиеся в бане', new BannedUserResource())->icon('heroicons.no-symbol'), //
             ])->icon('heroicons.outline.users'),
             MenuGroup::make('moonshine::ui.resource.system', [
                 MenuItem::make('moonshine::ui.resource.admins_title', new MoonShineUserResource())
