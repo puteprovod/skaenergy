@@ -2,13 +2,15 @@
 
 namespace App\Http\Middleware;
 
+use App\Http\Resources\User\IndexResource;
+use App\MoonShine\Resources\User\UserResource;
 use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class RedirectIfAuthenticated
+class  RedirectIfAuthenticated
 {
     /**
      * Handle an incoming request.
@@ -21,6 +23,7 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
+                //dd (IndexResource::make(Auth::user())->jsonSerialize());
                 return redirect(RouteServiceProvider::HOME);
             }
         }

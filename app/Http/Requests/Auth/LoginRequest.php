@@ -31,6 +31,14 @@ class LoginRequest extends FormRequest
             'password' => ['required', 'string'],
         ];
     }
+    public function messages()
+    {
+        return [
+            'email.required' => 'Не указан email',
+            'password.required' => 'Не указан пароль',
+            'email.email' => 'Некорректный email',
+        ];
+    }
 
     /**
      * Attempt to authenticate the request's credentials.
@@ -41,7 +49,7 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
         $array = $this->only('email', 'password');
-        $array['password']=$array['email'].'RoHF'.md5($array['email'].$array['password'].'ZaJr');
+        $array['password']=saltPassword($array['password'],$array['email']);
         if (! Auth::attempt($array, $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
             throw ValidationException::withMessages([
@@ -68,7 +76,7 @@ class LoginRequest extends FormRequest
         $seconds = RateLimiter::availableIn($this->throttleKey());
 
         throw ValidationException::withMessages([
-            'email' => trans('auth.throttle', [
+              'email' => trans('auth.throttle', [
                 'seconds' => $seconds,
                 'minutes' => ceil($seconds / 60),
             ]),

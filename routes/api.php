@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth')->get('/user', function (Request $request) {
+    return new \App\Http\Resources\User\ProfileResource($request->user());
 });
+
+Route::get('/user/{user}', function (User $user) {
+    return new \App\Http\Resources\User\InfoResource($user);
+});
+
+
+Route::post('/gbook/posts/create',\App\Http\Controllers\API\Gbook\StoreController::class)
+    ->middleware('logged','verified','not_banned')->middleware('throttle:6,1');
+
+Route::group(['namespace' => 'App\Http\Controllers\API\Gbook', 'prefix' => 'gbook'], function () {
+    Route::get('/posts', 'IndexController');
+    Route::get('/post/{post}', 'ShowPostController');
+    Route::post('/posts', 'IndexController');
+    Route::get('/posts/{user}', 'IndexController');
+    Route::post('/posts/{user}', 'IndexController');
+});
+

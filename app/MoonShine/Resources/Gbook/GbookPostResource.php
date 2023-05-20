@@ -7,18 +7,15 @@ use App\Models\Setting;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cache;
 use MoonShine\Actions\FiltersAction;
 use MoonShine\Decorations\Block;
 use MoonShine\Decorations\Button;
 use MoonShine\Fields\ID;
 use MoonShine\Fields\NoInput;
-use MoonShine\Fields\SwitchBoolean;
 use MoonShine\Fields\Text;
 use MoonShine\Fields\Textarea;
 use MoonShine\Filters\TextFilter;
-use MoonShine\FormActions\FormAction;
 use MoonShine\ItemActions\ItemAction;
 use MoonShine\Resources\Resource;
 
@@ -36,7 +33,6 @@ class GbookPostResource extends Resource
 
     public function fields(): array
     {
-
         return [
             Block::make('Редактирование поста', [
                 ID::make()->sortable(),
@@ -45,10 +41,11 @@ class GbookPostResource extends Resource
                 })->readonly(),
                 NoInput::make('Посетитель', 'name', function ($item1) {
                     if ($item1->user_id > 0) {
-                        $userString = '&#128100;&nbsp;&nbsp;<a href="/admin/resource/user-resource/' . $item1->user_id . '/edit">' . $item1->name . '</a>';
+                        $route = (new \App\MoonShine\Resources\User\UserResource)->route('edit', $item1->user_id);
+                        $userString = '&#128100;&nbsp;&nbsp;<a href="'.$route.'">' . $item1->name . '</a>';
                         if ($user = User::find($item1->user_id))
                             if ($user->banned_until > Carbon::now()->toDateString())
-                                $userString = '&#128683;&nbsp;&nbsp;<a href="/admin/resource/user-resource/' . $item1->user_id . '/edit">' . $item1->name . '</a>';
+                                $userString = '&#128683;&nbsp;&nbsp;<a href="'.$route.'">' . $item1->name . '</a>';
                     } else {
                         $userString = '&#129399;&nbsp;&nbsp;' . $item1->name;
                     }
@@ -63,6 +60,8 @@ class GbookPostResource extends Resource
                     return $comment;
                 })->readonly()->hideOnForm()->hideOnDetail(),
                 Text::make('IP пользователя', 'host')->readonly()->hideOnIndex(),
+                Button::make('Удалить пост и забанить пользователя на месяц',$this->getItem() ? $this->route('actions.item', $this->getItem()->getKey(),
+                    ['index' => $this->getItem()->user_id ? '1' : '0']) : '/',true)->icon('heroicons.no-symbol')
             ])
         ];
     }
@@ -94,7 +93,7 @@ class GbookPostResource extends Resource
     public function itemActions(): array
     {
         return [
-            ItemAction::make('Удалить и Заблокировать IP на месяц', function ($item) {
+            ItemAction::make('Удалить и бан IP на месяц', function ($item) {
                 $setting = Setting::find(1);
                 $setting->blocked_ips = $setting->blocked_ips->push([
                     'ip' => $item->host,
@@ -104,7 +103,7 @@ class GbookPostResource extends Resource
                 $item->delete();
             }, 'Пользователь успешно заблокирован по IP')->canSee(fn($item) => $item->user_id == 0)
                 ->icon('heroicons.no-symbol')->withConfirm(),
-            ItemAction::make('Удалить и заблокировать пользователя на месяц', function ($item) {
+            ItemAction::make('Удалить и бан пользователя на месяц', function ($item) {
                 if ($user = User::find($item->user_id)) {
                     $user->banned_until = Carbon::now()->addMonth()->toDateString();
                     $user->save();
@@ -114,28 +113,16 @@ class GbookPostResource extends Resource
                 ->withConfirm()->icon('heroicons.no-symbol'),
         ];
     }
-
-    public function formActions(): array
+    protected function afterUpdated(Model $item)
     {
-        return [
-            FormAction::make('Удалить и Заблокировать IP на месяц', function ($item) {
-                $setting = Setting::find(1);
-                $setting->blocked_ips = $setting->blocked_ips->push([
-                    'ip' => $item->host,
-                    'finish_date' => Carbon::now()->addMonth()->toDateString()
-                ]);
-                $setting->save();
-                $item->delete();
-            }, 'Пользователь успешно заблокирован по IP')->canSee(fn($item) => $item->user_id == 0)->withConfirm()
-                ->showInLine()->icon('heroicons.no-symbol'),
-            FormAction::make('Удалить и заблокировать пользователя на месяц', function ($item) {
-                if ($user = User::find($item->user_id)) {
-                    $user->banned_until = Carbon::now()->addMonth()->toDateString();
-                    $user->save();
-                }
-                $item->delete();
-            }, 'Пользователь успешно заблокирован')->canSee(fn($item) => $item->user_id > 0)->withConfirm()
-                ->showInLine()->icon('heroicons.no-symbol'),
-        ];
+        Cache::flush();
+    }
+    protected function afterDeleted(Model $item)
+    {
+        Cache::flush();
+    }
+    protected function afterMassDeleted(array $ids)
+    {
+        Cache::flush();
     }
 }

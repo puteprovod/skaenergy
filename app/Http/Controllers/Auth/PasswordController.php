@@ -13,17 +13,21 @@ class PasswordController extends Controller
     /**
      * Update the user's password.
      */
-    public function update(Request $request): RedirectResponse
+    public function update(Request $request): \Illuminate\Http\JsonResponse
     {
         $validated = $request->validateWithBag('updatePassword', [
-            'current_password' => ['required', 'current_password'],
-            'password' => ['required', Password::defaults(), 'confirmed'],
+            'current_password' => ['required'],
+            'password' => ['required', 'min:6', 'confirmed'],
         ]);
-
-        $request->user()->update([
-            'password' => Hash::make($validated['password']),
-        ]);
-
-        return back()->with('status', 'password-updated');
+        $user = $request->user();
+        $editedPasswordHash = Hash::make(saltPassword($validated['current_password'],$user->email));
+        if ($user->password === $editedPasswordHash) {
+            $editedNewPassword = saltPassword($validated['password'],$user->email);
+            $request->user()->update([
+                'password' => Hash::make($editedNewPassword),
+            ]);
+            return response()->json(['success' => 'success'], 200);
+        }
+        return response()->json(['errors' => [ 'current_password' => [ 0 => 'Неверно указан текущий пароль']]], 406);
     }
 }

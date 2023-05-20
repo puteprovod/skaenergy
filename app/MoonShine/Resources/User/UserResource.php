@@ -5,12 +5,16 @@ namespace App\MoonShine\Resources\User;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Storage;
 use MoonShine\Actions\FiltersAction;
 use MoonShine\Decorations\Block;
+use MoonShine\Decorations\Button;
 use MoonShine\Decorations\Column;
 use MoonShine\Decorations\Grid;
 use MoonShine\Fields\Date;
 use MoonShine\Fields\Email;
+use MoonShine\Fields\Image;
 use MoonShine\Fields\NoInput;
 use MoonShine\Fields\SwitchBoolean;
 use MoonShine\Fields\Text;
@@ -42,6 +46,8 @@ class UserResource extends Resource
                     Block::make('Информация о пользователе', [
                         NoInput::make('ID', 'id', fn($item) => '#' . $item->id)->badge('green')->sortable(),
                         Text::make('Никнейм', 'nick')->readonly()->sortable(),
+                        Image::make('Аватар','image_url')->disk('public')
+                            ->dir('user_avatars')->allowedExtensions(['png','gif','jpg','svg','webp'])->removable()->hideOnIndex(),
                         Email::make('E-mail', 'email')->readonly(),
                         Text::make('Имя', 'name')->readonly()->hideOnIndex(),
                         Text::make('Город', 'city')->readonly(),
@@ -137,5 +143,12 @@ class UserResource extends Resource
             }, 'Пользователь успешно разбанен')->icon('heroicons.outline.face-smile')->showInLine()->canSee(fn($item) => $item->banned_until > $now->toDateString()),
         ];
     }
-
+    protected function afterUpdated(Model $item)
+    {
+        if (isset($item->image_url)){
+            \Intervention\Image\Facades\Image::make(public_path('storage/user_avatars/'.basename($item->image_url)))->fit(500,500)->save(public_path('storage/user_avatars/'.basename($item->image_url)),95);
+            \Intervention\Image\Facades\Image::make(public_path('storage/user_avatars/'.basename($item->image_url)))->fit(100,100)->save(public_path('storage/user_avatars/thumb_'.basename($item->image_url)),95);
+        }
+        Cache::flush();
+    }
 }
