@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
       docker-php-ext-install pdo_mysql && \
       docker-php-ext-install bcmath && \
       apt-get clean && \
-      rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+      rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN docker-php-ext-configure gd --with-jpeg
 RUN docker-php-ext-install -j$(nproc) gd zip
