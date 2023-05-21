@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
       docker-php-ext-install bcmath && \
       docker-php-ext-install zip && \
       apt-get clean && \
-      rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+      rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN docker-php-ext-configure gd --with-jpeg --with-freetype
 RUN docker-php-ext-install gd
