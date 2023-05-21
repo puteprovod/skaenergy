@@ -43,7 +43,7 @@ const router = createRouter({
             path: '/gbook/post/:id',
             name: 'post',
             meta: { title: "Просмотр поста | Гостевая книга болельщиков ФК СКА-Хабаровск" },
-            component: () => import('../views/Gbook/Post.vue')
+            component: () => import('../views/gbook/Post.vue')
         }
     ]
 })
