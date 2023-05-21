@@ -13,7 +13,7 @@ app_build:
   tags:
     - build
   only:
-    - master
+    - main
   script:
     - docker build --build-arg NODE_ENV="dev" -t "$REGISTRY/dev/app:$CI_COMMIT_SHA" -f ./_docker/gitlab/app/Dockerfile .
     - docker push "$REGISTRY/dev/app:$CI_COMMIT_SHA"
@@ -23,9 +23,9 @@ dev_deploy:
   tags:
     - cicd
   only:
-    - master
+    - main
   script:
-    - export CONTAINER_PREFIX=myblog
+    - export CONTAINER_PREFIX=skaenergy
     - docker stop $(docker ps -a | grep ${CONTAINER_PREFIX}_ | awk '{print $1}') || true
     - docker rm $(docker ps -a | grep ${CONTAINER_PREFIX}_ | awk '{print $1}') || true
     - docker volume rm $(docker volume ls | grep ${CONTAINER_PREFIX}_ | awk '{print $2}') || true
