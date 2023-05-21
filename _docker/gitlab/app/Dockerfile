@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
       docker-php-ext-install pdo_mysql && \
       docker-php-ext-install bcmath && \
       docker-php-ext-install zip && \
-      docker-php-ext-configure gd --with-jpeg --with-freetype && \
+      docker-php-ext-configure gd --with-jpeg-dir=/usr/include/ --with-freetype-dir=/usr/include/ && \
       docker-php-ext-install gd && \
       apt-get clean && \
       rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
