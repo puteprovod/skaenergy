@@ -14,6 +14,12 @@ RUN apt-get update && apt-get install -y \
       apt-get clean && \
       rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
 
+RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+    --with-gd \
+    --with-jpeg-dir \
+    --with-png-dir \
+    --with-zlib-dir
+
 RUN docker-php-ext-install -j$(nproc) gd
 
 COPY ./_docker/app/php.ini /usr/local/etc/php/conf.d/php.ini
