@@ -9,10 +9,11 @@ RUN apt-get update && apt-get install -y \
       git && \
       docker-php-ext-install pdo_mysql && \
       docker-php-ext-install bcmath && \
-      docker-php-ext-install gd && \
       docker-php-ext-install zip && \
       apt-get clean && \
       rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN docker-php-ext-install -j$(nproc) gd zip
 
 COPY ./_docker/app/php.ini /usr/local/etc/php/conf.d/php.ini
 
@@ -20,6 +21,7 @@ COPY app            /var/www/app
 COPY bootstrap      /var/www/bootstrap
 COPY config         /var/www/config
 COPY database       /var/www/database
+COPY lang           /var/www/lang
 COPY public         /var/www/public
 COPY resources      /var/www/resources
 COPY routes         /var/www/routes
