@@ -38,7 +38,7 @@ class IndexController extends Controller
             $whereArray[] = ['user_id', $user->id];
             $posts = GbookPost::leftJoin('users', 'gbook_posts.user_id', '=', 'users.id')->select('gbook_posts.*', 'users.image_url as image_url')
                 ->where($whereArray)->orderBy('date', 'DESC')->limit($numberOfPosts)->get();
-            return IndexResource::collection($posts);
+            return IndexResource::collection($posts); //
         }
     }
 }
