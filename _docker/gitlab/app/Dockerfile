@@ -1,4 +1,4 @@
-FROM php:8.1-fpm
+FROM php:8.2-fpm
 
 RUN apt-get update && apt-get install -y \
       apt-utils \
@@ -9,8 +9,8 @@ RUN apt-get update && apt-get install -y \
       git && \
       docker-php-ext-install pdo_mysql && \
       docker-php-ext-install bcmath && \
+      docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-webp-dir=/usr/include/  --with-jpeg-dir=/usr/include/ && \
       docker-php-ext-install gd && \
-      docker-php-ext-configure gd --with-freetype --with-jpeg && \
       docker-php-ext-install zip && \
       apt-get clean && \
       rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
