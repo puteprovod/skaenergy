@@ -63,7 +63,7 @@
         <div class="align-middle inline-block">
             <a @mouseover="showUserModal(post.id)" @mouseleave="closeUserModal(post.id)"
                class="font-semibold text-ska-blue hover:underline cursor-pointer">{{ post.nick }}</a>
-            <span class="text-gray-600 ml-1">{{ post.city ? `(${post.city})` : '' }}</span>
+            <span class="text-gray-600 ml-1 hidden md:inline-block">{{ post.city ? `(${post.city})` : '' }}</span>
             <span
                 class="text-gray-500 ml-2">{{ post.date }}</span></div>
     </div>

@@ -6,7 +6,7 @@
                 <router-link to="/" class="flex items-center">
                     <img src="/img/ska.png" class="h-14" alt="ska logo"/>
                     <span
-                        class="text-mild-white border-gray-100 self-center text-[26px] md:hidden lg:block ml-3 md:ml-5 font-benderbold whitespace-nowrap">skaenergy.ru</span>
+                        class="text-mild-white border-gray-100 self-center text-[26px] md:hidden lg:block ml-2.5 md:ml-5 font-benderbold whitespace-nowrap">skaenergy.ru</span>
                 </router-link>
                 <div class="flex items-center md:order-2 p-2 px-1 md:px-2">
                     <div v-if="!user" class="mr-2 md:hidden block text-base border-gray-100 border rounded-lg px-2 py-2 hover:bg-blue-900">
@@ -19,12 +19,12 @@
                                 data-dropdown-placement="bottom">
                             <span class="sr-only">Open user menu</span>
                             <template v-if="user.thumb_url">
-                            <img class="w-10 h-10 rounded-full" :src="user.thumb_url"
+                            <img class="w-9 h-9 rounded-full" :src="user.thumb_url"
                                  alt="user photo">
                             </template>
                             <template v-else>
                             <div
-                                 class="rounded-full font-semibold text-xl text-ska-blue bg-mild-white border text-center h-10 w-10 align-middle inline-block align-center">
+                                 class="rounded-full font-semibold text-xl text-ska-blue bg-mild-white border text-center h-9 w-9 align-middle inline-block align-center">
                                 <div class="align-center content-center py-1">{{ user.nick.substring(0, 1).toUpperCase() }}</div>
                             </div>
                             </template>
@@ -52,7 +52,7 @@
                         </ul>
                     </div>
                     <button @click="isMenuOpened = !isMenuOpened" data-collapse-toggle="mobile-menu-2" type="button"
-                            class="inline-flex items-center border-gray-100 border p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+                            class="inline-flex items-center border-gray-100 border p-1 ml-0.5 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
                             aria-controls="mobile-menu-2" aria-expanded="false">
                         <span class="sr-only">Open main menu</span>
                         <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
