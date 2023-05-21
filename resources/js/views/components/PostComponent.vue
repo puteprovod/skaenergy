@@ -84,12 +84,12 @@
             :id="`actions-dropdown-${post.id}`">
             <ul aria-labelledby="user-menu-button">
                 <li>
-                    <a href="#" @click="showLink(post.id)"
+                    <a @click="showLink(post.id)"
                        class="block px-4 py-3 text-sm leading-tight text-gray-700 hover:bg-gray-100">&#128279;&nbsp;
                         Ссылка на пост</a>
                 </li>
                 <li>
-                    <a href="#"
+                    <a @click="report(post.id)"
                        class="block px-4 py-3 text-sm leading-tight text-gray-700 hover:bg-gray-100">&#128226;&nbsp;
                         Сообщить модератору</a>
                 </li>
@@ -156,6 +156,11 @@ export default {
             let element = document.getElementById(`user-modal-${id}`)
             element.classList.remove('block')
             element.classList.add('hidden')
+        },
+        report(id) {
+            document.getElementById(`actions-dropdown-${id}`).classList.remove('block')
+            document.getElementById(`actions-dropdown-${id}`).classList.add('hidden')
+            this.$parent.tryToReport(id)
         }
     }
 }

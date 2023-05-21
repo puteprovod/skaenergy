@@ -319,6 +319,24 @@ export default {
                     console.log(error)
                 }
             )
+        },
+        tryToReport(id){
+            if (this.user) {
+                this.axios.get(`/api/gbook/post/${id}/report`)
+                    .then(res => {
+                        this.infoMessage = '<span class="font-medium">Спасибо что сообщили! Модератор обратит внимание на этот пост.</span>'
+                        setTimeout(() => {
+                            this.infoMessage = ''
+                        }, 5 * 1000);
+                    })
+                window.scrollTo(0,0)
+            }else{
+                this.infoMessage = '<span class="font-medium">Вы должны быть авторизованным пользователем с подтвержденным email, чтобы иметь возможность сообщить модератору о проблеме.</span>'
+                setTimeout(() => {
+                    this.infoMessage = ''
+                }, 5 * 1000);
+                window.scrollTo(0,0)
+            }
         }
     }
 }

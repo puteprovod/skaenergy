@@ -26,6 +26,8 @@ Route::get('/user/{user}', function (User $user) {
 
 Route::post('/gbook/posts/create',\App\Http\Controllers\API\Gbook\StoreController::class)
     ->middleware('logged','verified','not_banned')->middleware('throttle:6,1');
+Route::get('/gbook/post/{post}/report', \App\Http\Controllers\API\Gbook\ReportController::class)
+    ->middleware('logged','verified','not_banned')->middleware('throttle:6,1');
 
 Route::group(['namespace' => 'App\Http\Controllers\API\Gbook', 'prefix' => 'gbook'], function () {
     Route::get('/posts', 'IndexController');
