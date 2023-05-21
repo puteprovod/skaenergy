@@ -6,11 +6,20 @@ RUN apt-get update && apt-get install -y \
       libpng-dev \
       libzip-dev \
       zip unzip \
-      git && \
+      git \
+      libfreetype6-dev \
+      libwebp-dev \
+      libjpeg62-turbo-dev \
+      libpng-dev \
+      nano \
+      libgmp-dev \
+      libldap2-dev \
+      netcat \
+      libsqlite3-dev && \
+      docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-webp-dir=/usr/include/  --with-jpeg-dir=/usr/include/ && \
+      docker-php-ext-install gd zip gmp pcntl ldap sysvmsg exif && \
       docker-php-ext-install pdo_mysql && \
       docker-php-ext-install bcmath && \
-      docker-php-ext-install gd && \
-      docker-php-ext-install zip && \
       apt-get clean && \
       rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
