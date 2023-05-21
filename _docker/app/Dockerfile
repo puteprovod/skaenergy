@@ -11,7 +11,6 @@ RUN apt-get update && apt-get install -y \
       libwebp-dev \
       libjpeg62-turbo-dev \
       libpng-dev \
-      nano \
       libgmp-dev \
       libldap2-dev \
       netcat \
