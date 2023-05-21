@@ -9,8 +9,8 @@
                         class="text-mild-white border-gray-100 self-center text-[26px] md:hidden lg:block ml-2.5 md:ml-5 font-benderbold whitespace-nowrap">skaenergy.ru</span>
                 </router-link>
                 <div class="flex items-center md:order-2 p-2 px-1 md:px-2">
-                    <div v-if="!user" class="mr-2 md:hidden block text-base border-gray-100 border rounded-lg px-2 py-2 hover:bg-blue-900">
-                        <router-link :to="{name:'login'}" class="text-gray-200">Войти</router-link>
+                    <div v-if="!user" class="mr-2 md:hidden block text-base border-gray-100 border rounded-lg px-1.5 py-1 hover:bg-blue-900">
+                        <router-link :to="{name:'login'}" class="text-gray-200 text-sm">Войти</router-link>
                     </div>
                     <div v-if="user">
                         <button @click="isProfileOpened = !isProfileOpened" @focusout="isProfileOpened=false" type="button"
