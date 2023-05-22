@@ -68,7 +68,7 @@ class UserResource extends Resource
                             fn($item) => ($item->banned_until > '0000-00-00') ? 'бан до ' . Carbon::parse($item->banned_until)->format('d.m.Y') : 'чист')
                             ->badge(fn($item) => ($item->banned_until > '0000-00-00') ? 'red' : 'green')->sortable()->hideOnForm(),
                     ])
-                ])->columnSpan(6) //
+                ])->columnSpan(6)
             ]),
 
 
