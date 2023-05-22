@@ -4,8 +4,8 @@ RUN apt-get update && apt-get install -y \
       apt-utils \
       libpq-dev \
       libpng-dev \
-      libzip-dev \
       libjpeg-dev \
+      libzip-dev \
       zip unzip \
       git && \
       docker-php-ext-install pdo_mysql && \
@@ -41,6 +41,9 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
 # alias
 RUN echo "alias a='artisan'" >> /root/.bashrc
 
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN apt-get install -y nodejs
+
 RUN composer install \
       --no-interaction \
       --no-plugins \
@@ -48,12 +51,6 @@ RUN composer install \
       --no-scripts \
       --no-autoloader \
       --prefer-dist
-
-RUN composer dump-autoload  --no-scripts --optimize && \
-    chown -R root:www-data /var/www && \
-    chmod 755 -R /var/www && \
-    chmod -R 775 /var/www/storage && \
-    chmod -R 775 /var/www/bootstrap/cache
 
 RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -
 RUN apt-get install -y nodejs
