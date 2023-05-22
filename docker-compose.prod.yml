@@ -49,6 +49,7 @@ services:
     container_name: ${CONTAINER_PREFIX}_app
     depends_on:
         - db
+    restart: always
 
   db:
     image: mysql:8.0
