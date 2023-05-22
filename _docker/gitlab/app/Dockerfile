@@ -5,6 +5,7 @@ RUN apt-get update && apt-get install -y \
       libpq-dev \
       libpng-dev \
       libzip-dev \
+      libjpeg-dev \
       zip unzip \
       git && \
       docker-php-ext-install pdo_mysql && \
@@ -39,9 +40,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
     --install-dir=/usr/local/bin
 # alias
 RUN echo "alias a='artisan'" >> /root/.bashrc
-
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
-RUN apt-get install -y nodejs
 
 RUN composer install \
       --no-interaction \
