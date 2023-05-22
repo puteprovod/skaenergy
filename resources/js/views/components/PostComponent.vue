@@ -10,7 +10,7 @@
             </div>
             <div @mouseover="showUserModal(post.id)" @mouseleave="closeUserModal(post.id)" v-else
                  class="rounded-full bg-ska-blue text-mild-white border cursor-pointer text-center h-6 w-6 align-middle mr-2">
-                <span class="text-xs">{{ post.nick.substring(0, 1).toUpperCase() }}</span>
+                <div class="text-xs pt-0.5">{{ post.nick.substring(0, 1).toUpperCase() }}</div>
             </div>
             <div
                 class="z-50 hidden w-[21rem] absolute top-2 left-0 my-4 border border-gray-200 text-base list-none bg-mild-white divide-y divide-gray-100 rounded-lg shadow"
