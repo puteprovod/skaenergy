@@ -40,7 +40,7 @@ class ProfileController extends Controller
 //            $request->user()->email_verified_at = null;
 //        }
 
-        $request->user()->save(); //
+        $request->user()->save();
         Cache::flush();
         return response()->json(['success' => 'success'], 200);
     }

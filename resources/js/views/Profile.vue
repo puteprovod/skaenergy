@@ -27,7 +27,7 @@
                             <span @click.prevent="tryToDeleteImage" class="text-2xl font-bold text-red-800 cursor-pointer" title="Удалить">&times;</span>
                         </div>
                         <input
-                            class="block p-2 w-full text-sm text-gray-900 border border-gray-300 cursor-pointer focus:outline-none"
+                            class="block p-2 w-full text-sm text-gray-900 border border-gray-200 cursor-pointer focus:outline-none"
                             id="file" @change="handleFileUpload( $event )" ref="file" type="file">
                         <p class="mt-1 text-xs text-gray-400" id="file_input_help">PNG, JPG, GIF, SVG, WEBP (Не более
                             1000x1000px).</p>

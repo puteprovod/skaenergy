@@ -2,7 +2,7 @@
     <header>
         <nav class="border-gray-200 bg-top-image px-1 md:px-6">
             <div
-                class="max-w-screen-xl flex flex-wrap items-center align-top justify-between mx-auto p-1 pb-2 relative">
+                class="max-w-screen-xl flex flex-wrap items-center align-top justify-between mx-auto p-1 pb-1.5 md:pb-2 relative">
                 <router-link to="/" class="flex items-center">
                     <img src="/img/ska.png" class="h-14" alt="ska logo"/>
                     <span
@@ -69,26 +69,26 @@
                     <ul class="flex flex-col font-medium p-4 md:p-0 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0">
                         <li>
                             <a href="#"
-                               class="block py-2 pl-3 pr-4 mr-1 font-benderbold text-mild-white rounded hover:bg-gray-100 hover:bg-opacity-40 md:hover:bg-transparent md:hover:text-blue-300 md:p-0">Матчи
+                               class="block py-2 pl-3 pr-4 mr-1 font-benderregular text-mild-white rounded hover:bg-gray-100 hover:bg-opacity-40 md:hover:bg-transparent md:hover:text-blue-300 md:p-0">Матчи
                                 СКА</a>
                         </li>
                         <li>
                             <a href="#"
-                               class="block py-2 pl-3 pr-4 mr-1 font-benderbold text-mild-white rounded hover:bg-gray-100 hover:bg-opacity-40 md:hover:bg-transparent md:hover:text-blue-300 md:p-0">Первый
+                               class="block py-2 pl-3 pr-4 mr-1 font-benderregular text-mild-white rounded hover:bg-gray-100 hover:bg-opacity-40 md:hover:bg-transparent md:hover:text-blue-300 md:p-0">Первый
                                 дивизион</a>
                         </li>
                         <li>
                             <a href="#"
-                               class="block py-2 pl-3 pr-4 mr-1 font-benderbold text-mild-white rounded hover:bg-gray-100 hover:bg-opacity-40 md:hover:bg-transparent md:hover:text-blue-300 md:p-0">История
+                               class="block py-2 pl-3 pr-4 mr-1 font-benderregular text-mild-white rounded hover:bg-gray-100 hover:bg-opacity-40 md:hover:bg-transparent md:hover:text-blue-300 md:p-0">История
                                 клуба</a>
                         </li>
                         <li>
                             <a href="#"
-                               class="block py-2 pl-3 pr-4 mr-1 font-benderbold text-mild-white rounded hover:bg-gray-100 hover:bg-opacity-40 md:hover:bg-transparent md:hover:text-blue-300 md:p-0">Болельщики</a>
+                               class="block py-2 pl-3 pr-4 mr-1 font-benderregular text-mild-white rounded hover:bg-gray-100 hover:bg-opacity-40 md:hover:bg-transparent md:hover:text-blue-300 md:p-0">Болельщики</a>
                         </li>
                         <li>
                             <a href="#"
-                               class="block py-2 pl-3 pr-4 mr-1 font-benderbold text-mild-white rounded hover:bg-gray-100 hover:bg-opacity-40 md:hover:bg-transparent md:hover:text-blue-300 md:p-0">Фотоальбомы</a>
+                               class="block py-2 pl-3 pr-4 mr-1 font-benderregular text-mild-white rounded hover:bg-gray-100 hover:bg-opacity-40 md:hover:bg-transparent md:hover:text-blue-300 md:p-0">Фотоальбомы</a>
                         </li>
                     </ul>
                 </div>
