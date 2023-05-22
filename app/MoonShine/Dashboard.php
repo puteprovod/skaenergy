@@ -31,7 +31,7 @@ class Dashboard extends DashboardScreen
     public function blocks(): array
     {
         $settings = App::make(Setting::class);
-        $string = 'Режим модерации ';
+        $string = config('filesystems.default').'Режим модерации ';
         $string.= $settings->gbook->moderation_mode ? 'включен' : 'отключен';
         $string.= '.<br> Анонимные посты ';
         $string.= $settings->gbook->allow_guests ? 'разрешены' : 'запрещены';
