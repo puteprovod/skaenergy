@@ -146,8 +146,8 @@ class UserResource extends Resource
     protected function afterUpdated(Model $item)
     {
         if (isset($item->image_url)){
-            \Intervention\Image\Facades\Image::make(public_path('storage/user_avatars/'.basename($item->image_url)))->fit(500,500)->save(public_path('storage/user_avatars/'.basename($item->image_url)),95);
-            \Intervention\Image\Facades\Image::make(public_path('storage/user_avatars/'.basename($item->image_url)))->fit(100,100)->save(public_path('storage/user_avatars/thumb_'.basename($item->image_url)),95);
+            \Intervention\Image\Facades\Image::make(storage_path('app/public/user_avatars/'.basename($item->image_url)))->fit(500,500)->save(storage_path('app/public/user_avatars/'.basename($item->image_url)),95);
+            \Intervention\Image\Facades\Image::make(storage_path('app/public/user_avatars/'.basename($item->image_url)))->fit(100,100)->save(storage_path('app/public/user_avatars/thumb_'.basename($item->image_url)),95);
         }
         Cache::flush();
     }

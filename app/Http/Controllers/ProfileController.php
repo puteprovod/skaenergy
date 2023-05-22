@@ -31,8 +31,8 @@ class ProfileController extends Controller
         $data = $request->validated();
         if (isset($data['avatar'])) {
             $data['image_url'] = Storage::disk('public')->put('/user_avatars', $data['avatar']);
-            Image::make($data['avatar'])->fit(500,500)->save(storage_path('app/public/user_avatars/'.basename($data['image_url'])));
-           Image::make($data['avatar'])->fit(100,100)->save(storage_path('app/public/user_avatars/thumb_'.basename($data['image_url'])));
+            Image::make($data['avatar'])->fit(500,500)->save(storage_path('app/public/user_avatars/'.basename($data['image_url'])),95);
+           Image::make($data['avatar'])->fit(100,100)->save(storage_path('app/public/user_avatars/thumb_'.basename($data['image_url'])),95);
         }
         $request->user()->fill($data);
 
