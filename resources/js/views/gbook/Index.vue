@@ -50,7 +50,7 @@
                     <div>
                     <textarea v-model="comment" @focusin="showPostButtons = true" @keyup="formNotEmpty"
                               @focusout="!showEmojiBox && !showCodeBox && !rulesOpened && !isFormNotEmpty ? showPostButtons = false : ''"
-                              id="messageArea" :class="showPostButtons ? 'h-52' : 'h-20'"
+                              id="messageArea" :class="showPostButtons ? 'h-48' : 'h-20'"
                               rows="4"
                               class="block p-2.5 w-full text-base text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-ska-blue"
                               placeholder="Что скажете?"></textarea>
@@ -64,10 +64,9 @@
                         </div>
                         <div class="inline-block align-middle content-center">
                             <a href="#" @mousedown="rulesOpened = true"
-                               class="text-gray-500 hover:text-ska-blue font-medium ml-7 text-sm">Правила
-                                гостевой</a>
+                               class="text-gray-500 hover:text-ska-blue font-medium ml-7 text-sm tracking-tight">Правила гостевой</a>
                         </div>
-                        <div class="float-right inline-block pt-1.5 hidden md:block">
+                        <div class="float-right inline-block pt-1.5">
                             <a href="#" @mousedown="showEmojiBox = !showEmojiBox; showPostButtons = true"
                                title="Смайлики"
                                class="text-4xl text-gray-500 hover:text-ska-blue">&#9786;</a>
