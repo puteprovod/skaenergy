@@ -6,7 +6,7 @@ services:
     volumes:
       - ./:/var/www
       - /var/storage/${CONTAINER_PREFIX}/:/var/www/storage/app/public/
-      - /var/storage/sessions/${CONTAINER_PREFIX}/:/var/www/storage/framework/sessions
+      - /var/storage/sessions/${CONTAINER_PREFIX}/:/var/www/storage/framework/sessions/
       - ./_docker/nginx/conf.d:/etc/nginx/conf.d:ro
       - /var/certbot/conf/:/etc/letsencrypt/:ro
     ports:
