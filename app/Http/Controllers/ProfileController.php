@@ -42,7 +42,7 @@ class ProfileController extends Controller
 
         $request->user()->save();
         Cache::flush();
-        return response()->json(['success' => 'success'], 200); //
+        return response()->json(['success' => 'success'], 200);
     }
 
     /**
