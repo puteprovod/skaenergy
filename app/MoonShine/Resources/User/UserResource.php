@@ -51,17 +51,19 @@ class UserResource extends Resource
                         Email::make('E-mail', 'email')->readonly(),
                         Text::make('Имя', 'name')->readonly()->hideOnIndex(),
                         Text::make('Город', 'city')->readonly(),
-                        Date::make('Дата рождения', 'birth_date')->readonly()->hideOnIndex(),
+                        Date::make('Дата рождения', 'birth_date')->format('d.m.Y')->readonly()->hideOnIndex(),
                     ])
                 ])->columnSpan(6),
                 Column::make([
                     Block::make('Данные регистрации', [
-                        Date::make('Дата регистрации', 'created_at')->readonly()->hideOnIndex(),
-                        Date::make('Дата верификации E-mail', 'email_verified_at')->hideOnIndex()->readonly(),
+                        Date::make('Дата регистрации', 'created_at')->format('d.m.Y')->readonly()->hideOnIndex(),
+                        Date::make('Дата верификации E-mail', 'email_verified_at')->format('d.m.Y')->hideOnIndex()->readonly(),
                     ]),
                     Block::make('Измененяемые параметры', [
                         SwitchBoolean::make('Член клуба ХАБАР', 'is_habar')->sortable()->hideOnIndex(),
-                        Date::make('В бане до:', 'banned_until')->sortable()->hideOnIndex(),
+                        Date::make('В бане до:', 'banned_until',
+                            function ($item) { return ($item->banned_until === null) ? '' : $item->banned_until; })
+                            ->format('d.m.Y')->hideOnIndex(),
                         NoInput::make('Бан-лист', 'banned_until',
                             fn($item) => ($item->banned_until > '0000-00-00') ? 'бан до ' . Carbon::parse($item->banned_until)->format('d.m.Y') : 'чист')
                             ->badge(fn($item) => ($item->banned_until > '0000-00-00') ? 'red' : 'green')->sortable()->hideOnForm(),
