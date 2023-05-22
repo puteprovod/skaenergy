@@ -38,6 +38,9 @@ services:
       - MAIL_ENCRYPTION=$MAIL_ENCRYPTION
       - MAIL_FROM_ADDRESS=$MAIL_FROM_ADDRESS
       - MAIL_FROM_NAME=$MAIL_FROM_NAME
+      - FILESYSTEM_DISK=$FILESISTEM_DISK
+      - QUEUE_CONNECTION=$QUEUE_CONNECTION
+      - SESSION_LIFETIME=$SESSION_LIFETIME
     volumes:
       - ./:/var/www
       - /var/storage/${CONTAINER_PREFIX}/:/var/www/storage/app/public/
