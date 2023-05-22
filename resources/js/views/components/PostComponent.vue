@@ -13,7 +13,7 @@
                 <span class="text-xs">{{ post.nick.substring(0, 1).toUpperCase() }}</span>
             </div>
             <div
-                class="z-50 hidden w-[23rem] absolute top-2 left-0 my-4 border border-gray-200 text-base list-none bg-mild-white divide-y divide-gray-100 rounded-lg shadow"
+                class="z-50 hidden w-[21rem] absolute top-2 left-0 my-4 border border-gray-200 text-base list-none bg-mild-white divide-y divide-gray-100 rounded-lg shadow"
                 :id="`user-modal-${post.id}`">
                 <div v-if="userInfo" class="p-4 text-gray-700 text-sm">
                     <div class="inline-block text-center align-middle">
