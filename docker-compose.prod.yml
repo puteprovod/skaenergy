@@ -44,6 +44,7 @@ services:
       - SESSION_LIFETIME=$SESSION_LIFETIME
     volumes:
       - ./:/var/www
+      - /var/storage/${CONTAINER_PREFIX}/:/var/www/storage/app/public/
       - /var/storage/sessions/${CONTAINER_PREFIX}/:/var/www/storage/framework/sessions/
     container_name: ${CONTAINER_PREFIX}_app
     depends_on:
