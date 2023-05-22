@@ -99,10 +99,10 @@
     <!-- Dropdown menu -->
     <div class="mt-2 text-sm/6 text-[#232323] text-justify break-words tracking-tight" v-html="post.comment">
     </div>
-    <div class="mt-3">
-        <span class="text-gray-500">#{{ post.id }}</span><a href="#"
-                                                            @mousedown="$parent.comment+=(`${post.nick} (#${post.id}): `)"
-                                                            class="ml-5 text-ska-blue">Ответить</a>
+    <div class="mt-4">
+        <a href="#" @mousedown="$parent.comment+=(`${post.nick} (#${post.id}): `)"
+                                                            class="align-middle text-ska-blue">Ответить</a>
+        <span class="text-gray-400 tracking-tight align-middle float-right">#{{ post.id }}</span>
     </div>
 </template>
 
