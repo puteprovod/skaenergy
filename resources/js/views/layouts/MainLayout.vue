@@ -19,7 +19,7 @@
                                 data-dropdown-placement="bottom">
                             <span class="sr-only">Open user menu</span>
                             <template v-if="user.thumb_url">
-                            <img class="w-9 h-9 rounded-full" :src="user.thumb_url"
+                            <img class="w-9 h-9 rounded-full bg-mild-white" :src="user.thumb_url"
                                  alt="user photo">
                             </template>
                             <template v-else>
