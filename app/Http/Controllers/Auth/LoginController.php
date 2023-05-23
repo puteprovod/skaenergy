@@ -19,7 +19,7 @@ class LoginController extends Controller
     public function callbackGoogle(){
         $user = Socialite::driver('google')->stateless()->user();
         $this->regOrLogin($user);
-        return redirect('/?soc=1');
+        return redirect('/');
     }
     public function regOrLogin($googleUser) {
         $user = User::where('email',$googleUser->email)->first();
