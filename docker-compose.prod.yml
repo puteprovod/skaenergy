@@ -42,6 +42,8 @@ services:
       - FILESYSTEM_DISK=$FILESYSTEM_DISK
       - QUEUE_CONNECTION=$QUEUE_CONNECTION
       - SESSION_LIFETIME=$SESSION_LIFETIME
+      - GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID
+      - GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET
     volumes:
       - ./:/var/www
       - /var/storage/${CONTAINER_PREFIX}/:/var/www/storage/app/public/

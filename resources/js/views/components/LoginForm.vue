@@ -137,11 +137,17 @@ export default {
     },
     methods: {
         getUser() {
-            if (localStorage.getItem('x_xsrf_token')) {
+            if (localStorage.getItem('x_xsrf_token') || this.$route.params.social === 1) {
                 this.axios.get('/api/user').then(res => {
                         this.user = res.data.data;
                         this.$parent.userLogged(this.user)
                         this.$parent.$parent.$parent.userLogged(this.user)
+                        if (this.$route.params.social === 1){
+                            this.$parent.successLogin()
+                            localStorage.setItem('x_xsrf_token', 'social')
+                            this.password = ''
+                            this.getUser()
+                        }
                     }
                 ).catch(
                     err => {

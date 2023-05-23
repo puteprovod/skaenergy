@@ -34,4 +34,4 @@ Route::controller(App\Http\Controllers\Auth\LoginController::class)->group(funct
 
 require __DIR__.'/auth.php';
 
-Route::get('{page}', IndexController::class)->where('page','^(?!admin).*$')->middleware('admin');
+Route::get('{page}', IndexController::class)->where('page','^(?!admin).*$');
