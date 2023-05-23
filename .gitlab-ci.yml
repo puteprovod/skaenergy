@@ -39,4 +39,4 @@ dev_deploy:
     - docker exec ${CONTAINER_PREFIX}_app php artisan storage:link
     - docker exec ${CONTAINER_PREFIX}_app npm install
     - docker exec ${CONTAINER_PREFIX}_app npm run build
-    - docker exec ${CONTAINER_PREFIX}_supervisor start all
+    - docker exec ${CONTAINER_PREFIX}_supervisor supervisorctl start all
