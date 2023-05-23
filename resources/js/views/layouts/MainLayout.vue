@@ -68,26 +68,26 @@
                      id="mobile-menu-2">
                     <ul class="flex flex-col font-medium p-4 md:p-0 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0">
                         <li>
-                            <a href="#"
+                            <a href="https://ska-khabarovsk.ru/ska_calendar.php"
                                class="block py-2 pl-3 pr-4 mr-1 font-benderregular text-mild-white rounded hover:bg-gray-100 hover:bg-opacity-40 md:hover:bg-transparent md:hover:text-blue-300 md:p-0">Матчи
                                 СКА</a>
                         </li>
                         <li>
-                            <a href="#"
+                            <a href="https://ska-khabarovsk.ru/season_table.php"
                                class="block py-2 pl-3 pr-4 mr-1 font-benderregular text-mild-white rounded hover:bg-gray-100 hover:bg-opacity-40 md:hover:bg-transparent md:hover:text-blue-300 md:p-0">Первый
                                 дивизион</a>
                         </li>
                         <li>
-                            <a href="#"
+                            <a href="https://ska-khabarovsk.ru/history_club.php"
                                class="block py-2 pl-3 pr-4 mr-1 font-benderregular text-mild-white rounded hover:bg-gray-100 hover:bg-opacity-40 md:hover:bg-transparent md:hover:text-blue-300 md:p-0">История
                                 клуба</a>
                         </li>
                         <li>
-                            <a href="#"
+                            <a href="https://ska-khabarovsk.ru/presscenter_news.php?sid=10"
                                class="block py-2 pl-3 pr-4 mr-1 font-benderregular text-mild-white rounded hover:bg-gray-100 hover:bg-opacity-40 md:hover:bg-transparent md:hover:text-blue-300 md:p-0">Болельщики</a>
                         </li>
                         <li>
-                            <a href="#"
+                            <a href="https://ska-khabarovsk.ru/media.php"
                                class="block py-2 pl-3 pr-4 mr-1 font-benderregular text-mild-white rounded hover:bg-gray-100 hover:bg-opacity-40 md:hover:bg-transparent md:hover:text-blue-300 md:p-0">Фотоальбомы</a>
                         </li>
                     </ul>

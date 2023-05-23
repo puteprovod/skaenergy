@@ -64,7 +64,9 @@
                         </div>
                         <div class="inline-block align-middle content-center">
                             <a href="#" @mousedown="rulesOpened = true"
-                               class="text-gray-500 hover:text-ska-blue font-medium ml-7 text-sm tracking-tight">Правила гостевой</a>
+                               class="text-gray-500 hover:text-ska-blue md:hidden font-medium ml-7 text-sm tracking-tight">Правила</a>
+                            <a href="#" @mousedown="rulesOpened = true"
+                               class="text-gray-500 hover:text-ska-blue hidden md:block font-medium ml-7 text-sm tracking-tight">Правила гостевой</a>
                         </div>
                         <div class="float-right inline-block pt-1.5">
                             <a href="#" @mousedown="showEmojiBox = !showEmojiBox; showPostButtons = true"
