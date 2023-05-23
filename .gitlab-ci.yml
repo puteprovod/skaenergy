@@ -30,6 +30,8 @@ dev_deploy:
     - docker rm $(docker ps -a | grep ${CONTAINER_PREFIX}_ | awk '{print $1}') || true
     - docker volume rm $(docker volume ls | grep ${CONTAINER_PREFIX}_ | awk '{print $2}') || true
     - docker compose -p $CONTAINER_PREFIX -f docker-compose.prod.yml up -d
+    - docker exec ${CONTAINER_PREFIX}_app composer update
+    - docker exec ${CONTAINER_PREFIX}_app composer install
     - docker exec ${CONTAINER_PREFIX}_app php artisan migrate
     - docker exec ${CONTAINER_PREFIX}_app php artisan cache:clear
     - docker exec ${CONTAINER_PREFIX}_app php artisan config:cache
@@ -37,3 +39,4 @@ dev_deploy:
     - docker exec ${CONTAINER_PREFIX}_app php artisan storage:link
     - docker exec ${CONTAINER_PREFIX}_app npm install
     - docker exec ${CONTAINER_PREFIX}_app npm run build
+    - docker exec ${CONTAINER_PREFIX}_supervisor start all
