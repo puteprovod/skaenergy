@@ -89,3 +89,13 @@ services:
     depends_on:
       - db
     container_name: ${CONTAINER_PREFIX}_pma
+
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./:/var/www
+      - /var/certbot/conf/:/etc/letsencrypt/
+    depends_on:
+      - nginx
+    container_name: ${CONTAINER_PREFIX}_certbot
+    command: certonly --webroot --webroot-path=/var/www/public --email serg-419@yandex.ru --agree-tos --no-eff-email -d skaenergy.ru

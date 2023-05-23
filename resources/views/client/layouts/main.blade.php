@@ -8,6 +8,5 @@
     <title>Document</title>
 </head>
 @yield('content')
-
 @vite(['resources/js/app.js'])
 </html>

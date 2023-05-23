@@ -14,7 +14,7 @@
                     </div>
                     <div v-if="user">
                         <button @click="isProfileOpened = !isProfileOpened" @focusout="isProfileOpened=false" type="button"
-                                class="flex mr-3 text-sm md:hidden block border-2 bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300"
+                                class="flex mr-3 text-sm md:hidden block border-2 bg-gray-800 rounded-full md:mr-0 focus:ring-2 focus:ring-gray-300"
                                 id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
                                 data-dropdown-placement="bottom">
                             <span class="sr-only">Open user menu</span>
@@ -25,7 +25,7 @@
                             <template v-else>
                             <div
                                  class="rounded-full font-semibold text-xl text-ska-blue bg-mild-white border text-center h-9 w-9 align-middle inline-block align-center">
-                                <div class="align-center content-center py-1">{{ user.nick.substring(0, 1).toUpperCase() }}</div>
+                                <div class="align-center content-center py-0.5">{{ user.nick.substring(0, 1).toUpperCase() }}</div>
                             </div>
                             </template>
                         </button>
