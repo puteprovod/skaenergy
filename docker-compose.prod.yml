@@ -52,7 +52,9 @@ services:
     restart: always
 
   supervisor:
-    image: $REGISTRY/dev/supervisor:$CI_COMMIT_SHA
+    build:
+      context: .
+      dockerfile: /_docker/supervisor/Dockerfile
     container_name: ${CONTAINER_PREFIX}_supervisor
     volumes:
       - ./:/var/www
