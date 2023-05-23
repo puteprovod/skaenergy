@@ -50,6 +50,7 @@ services:
     depends_on:
       - db
     restart: always
+    command: bash -c "composer update && composer install"
 
   supervisor:
     build:
