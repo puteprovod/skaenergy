@@ -86,6 +86,7 @@ services:
       PMA_HOST: db
       PMA_PORT: 3306
       UPLOAD_LIMIT: 1G
+      MAX_EXECUTION_TIME: 1800
     restart: always
     ports:
       - 8080:80
