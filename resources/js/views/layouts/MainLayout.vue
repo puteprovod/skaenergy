@@ -3,11 +3,11 @@
         <nav class="border-gray-200 bg-top-image px-1 md:px-6">
             <div
                 class="max-w-screen-xl flex flex-wrap items-center align-top justify-between mx-auto p-1 pb-1.5 md:pb-2 relative">
-                <router-link to="/" class="flex items-center">
+                <a href="/" class="flex items-center">
                     <img src="/img/ska.png" class="h-14" alt="ska logo"/>
                     <span
                         class="text-mild-white border-gray-100 self-center text-[26px] md:hidden lg:block ml-2.5 pb-0.5 md:pb-0 md:ml-5 font-benderbold whitespace-nowrap">skaenergy.ru</span>
-                </router-link>
+                </a>
                 <div class="flex items-center md:order-2 p-2 px-1 md:px-2">
                     <div v-if="!user" class="mr-2 md:hidden block text-base border-gray-100 border rounded-lg px-1.5 py-1 hover:bg-blue-900">
                         <router-link :to="{name:'login'}" class="text-gray-200 text-sm">Войти</router-link>

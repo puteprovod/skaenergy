@@ -136,7 +136,6 @@ export default {
         this.getUser()
     },
     methods: {
-
         getUser() {
             if (localStorage.getItem('x_xsrf_token') || this.$route.query.social === '1') {
                 this.axios.get('/api/user').then(res => {
@@ -147,7 +146,6 @@ export default {
                             this.$parent.successLogin()
                             localStorage.setItem('x_xsrf_token', 'social')
                             this.password = ''
-                            this.getUser()
                         }
                     }
                 ).catch(
