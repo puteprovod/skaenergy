@@ -20,7 +20,7 @@ class IndexController extends Controller
         $settings = App::make(Setting::class);
         $data = $request->validated();
         $numberOfPosts = isset($data['last']) ? $settings->gbook->index_posts_additional : $settings->gbook->index_posts_count;
-        $whereArray = [];
+        $whereArray = [];//
         $whereArray[] = ['premod', true];
         $postfix = '';
 
