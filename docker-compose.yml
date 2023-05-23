@@ -24,6 +24,15 @@ services:
             - db
         restart: always
 
+    supervisor:
+        build:
+            context: .
+            dockerfile: _docker/supervisor/Dockerfile
+        container_name: project_supervisor
+        volumes:
+            - ./:/var/www
+        restart: always
+
     db:
         image: mysql:8.0
         restart: always
