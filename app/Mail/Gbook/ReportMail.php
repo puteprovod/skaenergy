@@ -64,4 +64,4 @@ class ReportMail extends Mailable implements ShouldQueue
     {
         return [];
     }
-}
+}//
