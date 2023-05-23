@@ -142,7 +142,7 @@ export default {
                         this.user = res.data.data;
                         this.$parent.userLogged(this.user)
                         this.$parent.$parent.$parent.userLogged(this.user)
-                        if (this.$route.params.social === 1){
+                        if (this.$route.params.social === '1'){
                             this.$parent.successLogin()
                             localStorage.setItem('x_xsrf_token', 'social')
                             this.password = ''
