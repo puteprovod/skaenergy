@@ -131,7 +131,7 @@ export default {
                 })
                     .then(res => {
                         localStorage.setItem('x_xsrf_token', res.config.headers['X-XSRF-TOKEN'])
-                        this.$router.push({name: 'index'})
+                        this.$router.push({name: 'index',query:{infoMessageX:"Вы успешно зарегистрировались на сайте. Чтобы написать первый пост вам необходимо подтвердить email."}})
                     }).catch(error => {
                         console.log(error.response.data.errors)
                     this.errorMessage = error.response.data.errors
