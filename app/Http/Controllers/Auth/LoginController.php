@@ -24,7 +24,7 @@ class LoginController extends Controller
     public function regOrLogin($googleUser) {
         $user = User::where('email',$googleUser->email)->first();
         if (!$user){
-            while (User::where('nick',$googleUser->name)->count>0){
+            while (User::where('nick',$googleUser->name)->count()>0){
                 $randomInt = strval(random_int(1, 9));
                 $googleUser->name.=$randomInt;
             }
