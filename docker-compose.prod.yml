@@ -58,6 +58,7 @@ services:
     container_name: ${CONTAINER_PREFIX}_supervisor
     volumes:
       - ./:/var/www
+      - /var/storage/supervisor/${CONTAINER_PREFIX}/:/var/www/storage/logs/
     depends_on:
       - app
     restart: always
