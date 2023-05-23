@@ -54,10 +54,12 @@ services:
   supervisor:
     build:
       context: .
-      dockerfile: _docker/supervisor/Dockerfile
-    container_name: project_supervisor
+      dockerfile: /_docker/supervisor/Dockerfile
+    container_name: ${CONTAINER_PREFIX}_supervisor
     volumes:
       - ./:/var/www
+    depends_on:
+      - app
     restart: always
 
   db:
