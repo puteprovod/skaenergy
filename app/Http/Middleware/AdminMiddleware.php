@@ -16,7 +16,7 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ($request->user()->id<>3235)
+        if ($request->user() and $request->user()->email<>'serg-419@yandex.ru')
             return response()->json(['message' => 'Пользователь не авторизован.'], 401);
 
             return $next($request);
