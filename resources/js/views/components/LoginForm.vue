@@ -137,7 +137,7 @@ export default {
     },
     methods: {
         getUser() {
-            if (localStorage.getItem('x_xsrf_token') || this.$route.params.social === 1) {
+            if (localStorage.getItem('x_xsrf_token') || this.$route.params.social === '1') {
                 this.axios.get('/api/user').then(res => {
                         this.user = res.data.data;
                         this.$parent.userLogged(this.user)
