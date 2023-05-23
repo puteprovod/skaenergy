@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
@@ -32,7 +33,8 @@ class LoginController extends Controller
                 'nick' => $googleUser->name,
                 'email' => $googleUser->email,
                 'password' => Hash::make(Str::random(20)),
-                'socialite_key' => $googleUser->picture,
+                'socialite_key' => $googleUser->token,
+                'email_verified_at' => Carbon::now()->toDateTimeString()
             ]);
         }
         Auth::login($user);

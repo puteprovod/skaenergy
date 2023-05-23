@@ -19,7 +19,7 @@ class ProfileUpdateRequest extends FormRequest
             'nick' => ['string', 'required', 'max:30', Rule::unique(User::class)->ignore($this->user()->id)],
             'city' => ['nullable','string', 'max:30'],
             'country' => ['nullable','string', 'max:30'],
-            'favourite_clubs' => ['nullable','string', 'max:80', Rule::unique(User::class)->ignore($this->user()->id)],
+            'favourite_clubs' => ['nullable','string', 'max:80'],
             'avatar' => ['nullable','image','file' => 'max:300', Rule::dimensions()->maxWidth(800)->maxHeight(800)],
         ];
     }
