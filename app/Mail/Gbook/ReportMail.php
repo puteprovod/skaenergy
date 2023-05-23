@@ -13,7 +13,7 @@ use Illuminate\Queue\SerializesModels;
 
 class ReportMail extends Mailable implements ShouldQueue
 {
-    use Queueable, SerializesModels; //
+    use Queueable, SerializesModels;
 
     public GbookPost $post;
     public User $reportedUser;
