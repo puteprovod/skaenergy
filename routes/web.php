@@ -19,16 +19,17 @@ use Illuminate\Support\Facades\Route;
 //    return view('welcome');
 //});
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-//    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::delete('/profile/delete_image', [ProfileController::class, 'destroyImage'])->name('profile.destroy_image');
+Route::controller(App\Http\Controllers\Auth\LoginController::class)->group(function (){
+    Route::get('google_auth/redirect', 'redirectGoogle')->name('authorize.google');
+    Route::get('google_auth/callback', 'callbackGoogle');
 });
+
+//Route::middleware('auth')->group(function () {
+////    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+//    Route::delete('/profile/delete_image', [ProfileController::class, 'destroyImage'])->name('profile.destroy_image');
+//});
 
 
 require __DIR__.'/auth.php';

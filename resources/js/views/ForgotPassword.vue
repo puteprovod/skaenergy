@@ -38,7 +38,7 @@
 
 <script>
 export default {
-    name: "Registration",
+    name: "Forgot_password",
     mounted() {
         if (localStorage.getItem('x_xsrf_token')) {
             this.$router.push({name: 'index'})
