@@ -31,11 +31,11 @@ class UserResource extends Resource
     public string $titleField = 'name';
     public static string $subTitle = 'Просмотр и изменение информации о пользователях';
 
-    public static string $orderField = 'nick';
+    public static string $orderField = 'created_at';
 
     protected bool $editInModal = true;
 
-    public static string $orderType = 'ASC';
+    public static string $orderType = 'DESC';
     public static array $activeActions = ['edit', 'delete'];
 
     public function fields(): array
@@ -48,7 +48,7 @@ class UserResource extends Resource
                         Text::make('Никнейм', 'nick')->readonly()->sortable(),
                         Image::make('Аватар','image_url')->disk('public')
                             ->dir('user_avatars')->allowedExtensions(['png','gif','jpg','svg','webp'])->removable()->hideOnIndex(),
-                        Email::make('E-mail', 'email')->readonly(),
+                        Email::make('E-mail', 'email')->hideOnIndex()->readonly(),
                         Text::make('Имя', 'name')->readonly()->hideOnIndex(),
                         Text::make('Город', 'city')->readonly(),
                         Date::make('Дата рождения', 'birth_date')->format('d.m.Y')->readonly()->hideOnIndex(),
@@ -56,7 +56,7 @@ class UserResource extends Resource
                 ])->columnSpan(6),
                 Column::make([
                     Block::make('Данные регистрации', [
-                        Date::make('Дата регистрации', 'created_at')->format('d.m.Y')->readonly()->hideOnIndex(),
+                        Date::make('Дата регистрации', 'created_at')->format('d.m.Y')->readonly()->sortable(),
                         Date::make('Дата верификации E-mail', 'email_verified_at')->format('d.m.Y')->hideOnIndex()->readonly(),
                     ]),
                     Block::make('Измененяемые параметры', [

@@ -97,7 +97,7 @@
         </div>
     </div>
     <!-- Dropdown menu -->
-    <div class="mt-2 text-sm/6 text-[#232323] text-justify break-words tracking-tight" v-html="post.comment">
+    <div class="mt-2 text-sm/6 text-[#232323] break-words tracking-tight" v-html="post.comment">
     </div>
     <div class="mt-4">
         <a href="#" @mousedown="$parent.comment+=(`${post.nick} (#${post.id}): `)"
