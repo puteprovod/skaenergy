@@ -98,7 +98,7 @@
                             Google
                         </button>
                     </form>
-                    <form action="/google_auth/redirect" method="get">
+                    <form action="/vk_auth/redirect" method="get">
                         <button type="submit"
                                 class="text-white bg-[#5b7aa8] w-full justify-center hover:bg-[#7596bc]/90 focus:ring-4 focus:outline-none focus:ring-[#7596bc]/50 rounded-lg text-sm p-2.5 inline-flex mb-2">
                             <svg class="w-4 h-4 mr-2 -ml-1" aria-hidden="true" focusable="false" data-prefix="fab"
