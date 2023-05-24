@@ -14,9 +14,18 @@ use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
 {
+    public function redirectVk(){
+        return Socialite::driver('vkontakte')->redirect();
+    }
+    public function callbackVk(){
+        $user = Socialite::driver('vkontakte')->user();
+        $this->regOrLogin($user);
+        return redirect('/?social=1'); //
+    }
     public function redirectGoogle(){
         return Socialite::driver('google')->redirect();
     }
+
     public function callbackGoogle(){
         $user = Socialite::driver('google')->stateless()->user();
         $this->regOrLogin($user);
@@ -33,7 +42,6 @@ class LoginController extends Controller
                 'nick' => $googleUser->name,
                 'email' => $googleUser->email,
                 'password' => Hash::make(Str::random(20)),
-                'socialite_key' => $googleUser->token,
                 'email_verified_at' => Carbon::now()->toDateTimeString()
             ]);
         }

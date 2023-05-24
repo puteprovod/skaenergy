@@ -22,7 +22,9 @@ use Illuminate\Support\Facades\Route;
 Route::controller(App\Http\Controllers\Auth\LoginController::class)->group(function (){
     Route::get('google_auth/redirect', 'redirectGoogle')->name('authorize.google');
     Route::get('google_auth/callback', 'callbackGoogle');
-});
+    Route::get('vk_auth/redirect', 'redirectVk')->name('authorize.vk');
+    Route::get('vk_auth/callback', 'callbackVk');
+})->middleware('guest');
 
 Route::middleware('auth')->group(function () {
 //    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
