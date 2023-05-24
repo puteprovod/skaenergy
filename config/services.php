@@ -39,7 +39,7 @@ return [
     'vkontakte' => [
         'client_id' => env('VKONTAKTE_CLIENT_ID'),
         'client_secret' => env('VKONTAKTE_CLIENT_SECRET'),
-        'redirect' => 'https://skaenergy.ru/vk_auth/callback'
+        'redirect' => 'https://skaenergy.ru/vk_auth/callback' //VK
     ],
 
 ];
