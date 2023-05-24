@@ -47,7 +47,7 @@ class GbookPost extends Model
     public function prepareComment(): string
     {
         $comment = $this->comment;
-        $comment = preg_replace("/\(#([0-9]+)\)/", " (<a href=\"#\\1\" class=\"font-semibold\">#\\1</a>)", $comment);
+        $comment = preg_replace("/\(#([0-9]+)\)/", " (<a href=\"#\\1\">#\\1</a>)", $comment);
         $comment = nl2br($comment);
         $comment = $this->emotion($comment);
         return $comment;
