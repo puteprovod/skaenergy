@@ -20,9 +20,9 @@ class GbookPost extends Model
     {
         $post_date = Carbon::createFromTimestamp($this->date)->timezone("Asia/Vladivostok");
         $now = Carbon::now()->timestamp;
-        if ($post_date >= Carbon::today())
+        if ($post_date->timestamp >= Carbon::today()->timestamp)
             return 'Сегодня в ' . $post_date->format("H:i");
-        if ($post_date >= Carbon::yesterday())
+        if ($post_date->timestamp >= Carbon::yesterday()->timestamp)
             return 'Вчера в ' . $post_date->format("H:i");
         return $post_date->format("d.m.Y H:i");
     }

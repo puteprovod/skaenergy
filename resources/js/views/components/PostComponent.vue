@@ -1,6 +1,6 @@
 <template>
-    <div class="inline-block mb-1">
-        <div class="relative inline-block">
+    <div :id="post.id" class="inline-block">
+        <div class="relative inline-block align-middle">
             <div @mouseover="showUserModal(post.id)" @mouseleave="closeUserModal(post.id)"
                  v-if="post.user && post.user.thumb_url"
                  class="rounded-full border text-center h-6 w-6 mr-2 content-center align-middle">
@@ -9,11 +9,11 @@
                      alt="avatar">
             </div>
             <div @mouseover="showUserModal(post.id)" @mouseleave="closeUserModal(post.id)" v-else
-                 class="rounded-full bg-ska-blue text-mild-white border cursor-pointer text-center h-6 w-6 align-middle mr-2">
-                <span class="text-xs">{{ post.nick.substring(0, 1).toUpperCase() }}</span>
+                 class="rounded-full bg-ska-blue text-mild-white border cursor-pointer text-center h-6 w-6 flex mr-2">
+                <div class="mx-auto my-auto text-xs">{{ post.nick.substring(0, 1).toUpperCase() }}</div>
             </div>
             <div
-                class="z-50 hidden w-[21rem] absolute top-2 left-0 my-4 border border-gray-200 text-base list-none bg-mild-white divide-y divide-gray-100 rounded-lg shadow"
+                class="z-50 hidden w-[21rem] absolute align-middle top-2 left-0 my-4 border border-gray-200 text-base list-none bg-mild-white divide-y divide-gray-100 rounded-lg shadow"
                 :id="`user-modal-${post.id}`">
                 <div v-if="userInfo" class="p-4 text-gray-700 text-sm">
                     <div class="inline-block text-center align-middle">
@@ -60,14 +60,15 @@
                 </div>
             </div>
         </div>
-        <div class="align-middle inline-block">
+        <div class="inline-block align-middle">
             <a @mouseover="showUserModal(post.id)" @mouseleave="closeUserModal(post.id)"
                class="font-semibold text-ska-blue hover:underline cursor-pointer">{{ post.nick }}</a>
             <span class="text-gray-600 ml-1 hidden md:inline-block">{{ post.city ? `(${post.city})` : '' }}</span>
             <span
-                class="text-gray-500 ml-2 tracking-tight">{{ post.date }}</span></div>
+                class="text-gray-500 ml-2 tracking-tight">{{ post.date }}</span>
+        </div>
     </div>
-    <div class="float-right inline-block relative">
+    <div class="float-right align-middle inline-block relative">
         <svg @click="showActionsDropdown(post.id)"
              class="fill-gray-500 hover:fill-black hover:cursor-pointer hover:rounded-lg h-4 w-4"
              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -97,9 +98,9 @@
         </div>
     </div>
     <!-- Dropdown menu -->
-    <div class="mt-2 text-sm/6 text-[#232323] break-words tracking-tight" v-html="post.comment">
+    <div class="mt-3.5 text-sm/6 align-middle text-[#232323] break-words tracking-tight" v-html="post.comment">
     </div>
-    <div class="mt-4">
+    <div class="mt-4 align-middle">
         <a href="#" @mousedown="$parent.comment+=(`${post.nick} (#${post.id}): `)"
                                                             class="align-middle text-ska-blue">Ответить</a>
         <span class="text-gray-400 tracking-tight align-middle float-right">#{{ post.id }}</span>
