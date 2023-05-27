@@ -18,6 +18,7 @@ class ReportController extends Controller
         $user = $request->user();
         try {
             Mail::to('serg-419@yandex.ru')->send(new ReportMail($post, $user));
+            Mail::to('chernovss@mail.ru')->send(new ReportMail($post, $user));
         } catch (\Exception $exception2) {
             $errorMessage = "Ошибка отправки почты " . $exception2;
         }

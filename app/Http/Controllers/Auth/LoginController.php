@@ -22,6 +22,14 @@ class LoginController extends Controller
         $this->regOrLogin($user);
         return redirect('/?social=1'); //
     }
+    public function redirectApple(){
+        return Socialite::driver('apple')->redirect();
+    }
+    public function callbackApple(){
+        $user = Socialite::driver('apple')->user();
+        $this->regOrLogin($user);
+        return redirect('/?social=1'); //
+    }
     public function redirectGoogle(){
         return Socialite::driver('google')->redirect();
     }
@@ -31,16 +39,16 @@ class LoginController extends Controller
         $this->regOrLogin($user);
         return redirect('/?social=1'); //
     }
-    public function regOrLogin($googleUser) {
-        $user = User::where('email',$googleUser->email)->first();
+    public function regOrLogin($socialUser) {
+        $user = User::where('email',$socialUser->email)->first();
         if (!$user){
-            while (User::where('nick',$googleUser->name)->count()>0){
+            while (User::where('nick',$socialUser->name)->count()>0){
                 $randomInt = strval(random_int(1, 9));
-                $googleUser->name.=$randomInt;
+                $socialUser->name.=$randomInt;
             }
             $user = User::create([
-                'nick' => $googleUser->name,
-                'email' => $googleUser->email,
+                'nick' => $socialUser->name,
+                'email' => $socialUser->email,
                 'password' => Hash::make(Str::random(20)),
                 'email_verified_at' => Carbon::now()->toDateTimeString()
             ]);

@@ -41,5 +41,9 @@ return [
         'client_secret' => env('VKONTAKTE_CLIENT_SECRET'),
         'redirect' => 'https://skaenergy.ru/vk_auth/callback' //VK
     ],
-
+    'apple' => [
+        'client_id' => env('APPLE_CLIENT_ID'),
+        'client_secret' => env('APPLE_CLIENT_SECRET'),
+        'redirect' => 'https://skaenergy.ru/apple_auth/callback'
+    ],
 ];
