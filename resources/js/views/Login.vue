@@ -78,18 +78,6 @@
                             VK
                         </button>
                     </form>
-                    <form action="/facebook_auth/redirect" method="get">
-                        <button type="submit"
-                                class="text-white bg-[#2e6ab7] w-full justify-center hover:bg-[#2e6ab7]/90 focus:ring-4 focus:outline-none focus:ring-[#2e6ab7]/50 rounded-lg text-sm p-2.5 inline-flex dark:focus:ring-[#2e6ab7]/55 mb-2">
-                            <svg class="w-4 h-4 mr-2 -ml-1" aria-hidden="true" focusable="false" data-prefix="fab"
-                                 data-icon="facebook-f" role="img" xmlns="http://www.w3.org/2000/svg"
-                                 viewBox="-60 -80 320 592">
-                                <path fill="currentColor"
-                                      d="M279.1 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.4 0 225.4 0c-73.22 0-121.1 44.38-121.1 124.7v70.62H22.89V288h81.39v224h100.2V288z"></path>
-                            </svg>
-                            Facebook
-                        </button>
-                    </form>
                 </div>
             </div>
         </div>
