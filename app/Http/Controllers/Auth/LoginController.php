@@ -28,7 +28,7 @@ class LoginController extends Controller
     public function callbackFacebook(){
         $user = Socialite::driver('facebook')->user();
         $this->regOrLogin($user);
-        return redirect('/?social=1'); //
+        return redirect('/?social=1'); ////
     }
     public function redirectGoogle(){
         return Socialite::driver('google')->redirect();
