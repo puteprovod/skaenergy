@@ -34,16 +34,16 @@ return [
     'google' => [
         'client_id' => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-        'redirect' => 'https://skaenergy.ru/google_auth/callback', //GOOGLE1
+        'redirect' => env('APP_URL').'google_auth/callback',
     ],
     'vkontakte' => [
         'client_id' => env('VKONTAKTE_CLIENT_ID'),
         'client_secret' => env('VKONTAKTE_CLIENT_SECRET'),
-        'redirect' => 'https://skaenergy.ru/vk_auth/callback' //VK
+        'redirect' => env('APP_URL').'vk_auth/callback'
     ],
-    'apple' => [
-        'client_id' => env('APPLE_CLIENT_ID'),
-        'client_secret' => env('APPLE_CLIENT_SECRET'),
-        'redirect' => 'https://skaenergy.ru/apple_auth/callback'
+    'facebook' => [
+        'client_id' => env('FACEBOOK_CLIENT_ID'),
+        'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
+        'redirect' => env('APP_URL').'facebook_auth/callback'
     ],
 ];

@@ -22,11 +22,11 @@ class LoginController extends Controller
         $this->regOrLogin($user);
         return redirect('/?social=1'); //
     }
-    public function redirectApple(){
-        return Socialite::driver('apple')->redirect();
+    public function redirectFacebook(){
+        return Socialite::driver('facebook')->redirect();
     }
-    public function callbackApple(){
-        $user = Socialite::driver('apple')->user();
+    public function callbackFacebook(){
+        $user = Socialite::driver('facebook')->user();
         $this->regOrLogin($user);
         return redirect('/?social=1'); //
     }

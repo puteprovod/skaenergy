@@ -24,8 +24,8 @@ Route::controller(App\Http\Controllers\Auth\LoginController::class)->group(funct
     Route::get('google_auth/callback', 'callbackGoogle');
     Route::get('vk_auth/redirect', 'redirectVk')->name('authorize.vk');
     Route::get('vk_auth/callback', 'callbackVk');
-    Route::get('apple_auth/redirect', 'redirectApple')->name('authorize.apple');
-    Route::get('apple_auth/callback', 'callbackApple');
+    Route::get('facebook_auth/redirect', 'redirectFacebook')->name('authorize.facebook');
+    Route::get('facebook_auth/callback', 'callbackFacebook');
 })->middleware('guest');
 
 Route::middleware('auth')->group(function () {
