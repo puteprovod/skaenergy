@@ -60,7 +60,7 @@ services:
   supervisor:
     build:
       context: .
-      dockerfile: /_docker/supervisor/Dockerfile
+      dockerfile: _docker/supervisor/Dockerfile
     container_name: ${CONTAINER_PREFIX}_supervisor
     volumes:
       - ./:/var/www
