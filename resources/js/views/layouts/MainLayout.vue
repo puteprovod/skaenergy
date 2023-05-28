@@ -24,8 +24,8 @@
                             </template>
                             <template v-else>
                             <div
-                                 class="rounded-full font-semibold text-xl text-ska-blue bg-mild-white border text-center h-9 w-9 align-middle inline-block align-center">
-                                <div class="align-center content-center py-0.5">{{ user.nick.substring(0, 1).toUpperCase() }}</div>
+                                 class="rounded-full font-semibold text-xl text-ska-blue bg-mild-white border text-center h-9 w-9 inline-flex">
+                                <div class="align-center my-auto mx-auto content-center">{{ user.nick.substring(0, 1).toUpperCase() }}</div>
                             </div>
                             </template>
                         </button>

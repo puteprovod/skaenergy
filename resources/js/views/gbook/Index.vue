@@ -60,11 +60,11 @@
                             <input @click.prevent="tryToPost"
                                    :class="isFormNotEmpty ? 'bg-ska-blue font-medium cursor-pointer hover:bg-[#274D82]' : 'bg-gray-500'"
                                    type="submit" value="Отправить"
-                                   class="rounded-lg text-sm text-white p-2.5 px-8 mt-3">
+                                   class="rounded-lg text-sm text-white p-2.5 px-4 md:px-8 mt-3">
                         </div>
                         <div class="inline-block align-middle content-center">
                             <a href="#" @mousedown="rulesOpened = true"
-                               class="text-gray-500 hover:text-ska-blue md:hidden font-medium ml-7 text-sm tracking-tight">Правила</a>
+                               class="text-gray-500 hover:text-ska-blue md:hidden font-medium ml-4 text-sm tracking-tight">Правила</a>
                             <a href="#" @mousedown="rulesOpened = true"
                                class="text-gray-500 hover:text-ska-blue hidden md:block font-medium ml-7 text-sm tracking-tight">Правила гостевой</a>
                         </div>
