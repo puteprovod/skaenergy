@@ -17,7 +17,7 @@ class IndexController extends Controller
 {
     public function __invoke(IndexRequest $request, User $user = null)
     {
-        $settings = App::make(Setting::class); //
+        $settings = App::make(Setting::class);
         $data = $request->validated();
         $numberOfPosts = isset($data['last']) ? $settings->gbook->index_posts_additional : $settings->gbook->index_posts_count;
         $whereArray = [];//
