@@ -18,8 +18,8 @@ class GbookPost extends Model
 
     public function getDateFormatted(): string
     {
-        $post_date = Carbon::createFromTimestamp($this->date)->timezone("Asia/Vladivostok");
-        $now = Carbon::now()->timestamp;
+        $offset = Carbon::createFromTimestamp(0,"Asia/Vladivostok")->getOffset();
+        $post_date = Carbon::createFromTimestamp($this->date+$offset);
         if ($post_date->timestamp >= Carbon::today()->timestamp)
             return 'Сегодня в ' . $post_date->format("H:i");
         if ($post_date->timestamp >= Carbon::yesterday()->timestamp)
