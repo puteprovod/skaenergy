@@ -19,7 +19,7 @@ class AdminMiddleware
     {
         if ($user = $request->user())
             if ($muser = MoonshineUser::where('email', $user->email)->first())
-                if ($muser->moonshineUserRole()->first()->name === 'Admin')
+                if ($muser->moonshineUserRole->name === 'Admin')
                     return $next($request);
         return response()->json(['message' => 'Пользователь не авторизован.'], 401);
     }

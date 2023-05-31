@@ -22,7 +22,7 @@ class ProfileResource extends JsonResource
     private function getRole($email): string
     {
         if ($user = MoonshineUser::where('email', $email)->first())
-            return $user->moonshineUserRole()->first()->name;
+            return $user->moonshineUserRole->name;
         return 'User';
     }
 

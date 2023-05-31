@@ -22,7 +22,7 @@ class PostOwnerMiddleware
            if ($post->user_id === $request->user()->id)
                return $next($request);
            if ($muser = MoonshineUser::where('email', $user->email)->first())
-               if ($muser->moonshineUserRole()->first()->name === 'Admin' or $muser->moonshineUserRole()->first()->name === 'Supervisor')
+               if ($muser->moonshineUserRole->name === 'Admin' or $muser->moonshineUserRole->name === 'Supervisor')
                    return $next($request);
        }
        return response()->json(['message' => 'Пользователь не авторизован.'], 401);

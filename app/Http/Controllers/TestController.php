@@ -11,8 +11,7 @@ class TestController extends Controller
     public function __invoke()
     {
        $user = User::find(5)->email;
-       $muser = MoonshineUser::where('email',$user)->first();
-       dd ($muser->moonshineUserRole()->first()->name);
-
+      $muser = MoonshineUser::where('email',$user)->first();
+       dump ($muser->moonshineUserRole->name);
     }
 }
