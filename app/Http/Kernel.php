@@ -5,6 +5,7 @@ namespace App\Http;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\LoggedUserMiddleware;
 use App\Http\Middleware\NotBannedUserMiddleware;
+use App\Http\Middleware\PostOwnerMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -68,6 +69,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'logged' => LoggedUserMiddleware::class,
         'not_banned' => NotBannedUserMiddleware::class,
-        'admin' => AdminMiddleware::class
+        'admin' => AdminMiddleware::class,
+        'post_owner' => PostOwnerMiddleware::class,
     ];
 }

@@ -86,13 +86,24 @@
             <ul aria-labelledby="user-menu-button">
                 <li>
                     <a @click="showLink(post.id)"
-                       class="block px-4 py-3 text-sm leading-tight text-gray-700 hover:bg-gray-100">&#128279;&nbsp;
+                       class="block px-4 py-3 text-sm cursor-pointer leading-tight text-gray-700 hover:bg-gray-100">&#128279;&nbsp;
                         Ссылка на пост</a>
                 </li>
                 <li>
-                    <a @click="report(post.id)"
-                       class="block px-4 py-3 text-sm leading-tight text-gray-700 hover:bg-gray-100">&#128226;&nbsp;
+                    <a v-if="!post.user || !$parent.user || (post.user && $parent.user && (post.user && (post.user.id !== $parent.user.id) && $parent.user.role !== 'Supervisor' && $parent.user.role !== 'Admin'))" @click="report(post.id)"
+                       class="block px-4 py-3 text-sm cursor-pointer leading-tight text-gray-700 hover:bg-gray-100">&#128226;&nbsp;
                         Сообщить модератору</a>
+                </li>
+                <li>
+                    <a :href="`/admin/resource/gbook-post-resource/${post.id}/edit`" target="_blank"
+                       v-if="post.user && $parent.user && ($parent.user.role === 'Supervisor' || $parent.user.role === 'Admin')" @click="report(post.id)"
+                       class="block px-4 py-3 text-sm cursor-pointer leading-tight text-gray-700 hover:bg-gray-100">&#10145;&nbsp;
+                        Пост в админпанели</a>
+                </li>
+                <li>
+                    <a v-if="post.user && $parent.user && ((post.user.id === $parent.user.id) || ($parent.user.role === 'Supervisor' || $parent.user.role === 'Admin'))" @click="tryToDeletePost(post.id)"
+                       class="block px-4 py-3 text-sm cursor-pointer leading-tight text-gray-700 hover:bg-gray-100">&#10060;&nbsp;
+                        Удалить пост</a>
                 </li>
             </ul>
         </div>
@@ -162,6 +173,18 @@ export default {
             document.getElementById(`actions-dropdown-${id}`).classList.remove('block')
             document.getElementById(`actions-dropdown-${id}`).classList.add('hidden')
             this.$parent.tryToReport(id)
+        },
+        tryToDeletePost(id){
+            this.axios.post('/api/gbook/post/'+id,{
+                _method: 'delete'
+            })
+                .then(res => {
+                    document.getElementById(`actions-dropdown-${id}`).classList.remove('block')
+                    document.getElementById(`actions-dropdown-${id}`).classList.add('hidden')
+                    this.$parent.deletePost(id)
+                }).catch(error => {
+                this.$router.push({name: 'index',query: { infoMessageX: `Пост #${id} не найден` }})
+            })
         }
     }
 }

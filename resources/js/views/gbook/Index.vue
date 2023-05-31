@@ -170,6 +170,16 @@ export default {
                     this.posts = this.preparePostComments(posts)
                 })
         },
+        deletePost(id){
+            const index = this.posts.findIndex(n => n.id === id);
+            if (index !== -1) {
+                this.posts.splice(index, 1);
+            }
+            this.infoMessage = '<span class="font-medium">Сообщение успешно удалено!</span>'
+            setTimeout(() => {
+                this.infoMessage = ''
+            }, 5 * 1000);
+        },
         preparePostComments(comments) {
             comments.forEach(function (item) {
                 item.comment = item.comment.replaceAll('<a ', '<a class="text-ska-blue font-semibold hover:underline break-all" ');
@@ -221,10 +231,8 @@ export default {
             })
                 .then(res => {
                     let newPosts = res.data.data
-                    console.log(res.data.data)
                     newPosts = this.preparePostComments(newPosts)
                     this.posts.push(...newPosts)
-                    console.log(newPosts)
                     if (newPosts.length > 0) {
                         window.addEventListener("scroll", this.handleScroll)
                     } else {
@@ -238,7 +246,6 @@ export default {
             if (element.getBoundingClientRect().bottom < window.innerHeight) {
                 window.removeEventListener("scroll", this.handleScroll)
                 this.loadMorePosts()
-                console.log('yes!')
             }
         },
         successLogin() {

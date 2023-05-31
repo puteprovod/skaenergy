@@ -32,6 +32,7 @@ Route::get('/gbook/post/{post}/report', \App\Http\Controllers\API\Gbook\ReportCo
 Route::group(['namespace' => 'App\Http\Controllers\API\Gbook', 'prefix' => 'gbook'], function () {
     Route::get('/posts', 'IndexController');
     Route::get('/post/{post}', 'ShowPostController');
+    Route::delete('/post/{post}', 'DeletePostController')->middleware('post_owner');
     Route::post('/posts', 'IndexController');
     Route::get('/posts/{user}', 'IndexController');
     Route::post('/posts/{user}', 'IndexController');

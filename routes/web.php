@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/', function () {
 //    return view('welcome');
 //});
+Route::get('test',\App\Http\Controllers\TestController::class)->middleware('admin');
 
 Route::controller(App\Http\Controllers\Auth\LoginController::class)->group(function (){
     Route::get('google_auth/redirect', 'redirectGoogle')->name('authorize.google');
