@@ -96,7 +96,7 @@
                 </li>
                 <li>
                     <a :href="`/admin/resource/gbook-post-resource/${post.id}/edit`" target="_blank"
-                       v-if="post.user && $parent.user && ($parent.user.role === 'Supervisor' || $parent.user.role === 'Admin')" @click="report(post.id)"
+                       v-if="post.user && $parent.user && ($parent.user.role === 'Supervisor' || $parent.user.role === 'Admin')"
                        class="block px-4 py-3 text-sm cursor-pointer leading-tight text-gray-700 hover:bg-gray-100">&#10145;&nbsp;
                         Пост в админпанели</a>
                 </li>
